@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_color">#6bddf6</color>
+    <color name="theme_color_light">#b3eefa</color>
+    <color name="theme_color_dark">#6bbaf6</color>
+    <color name="theme_color_complement">#f6846b</color>
+    <color name="btn_yellow">#fff0e140</color>
+    <color name="btn_red">#f07a7d</color>
+    <color name="btn_green">#ff97e273</color>
+
+</resources>

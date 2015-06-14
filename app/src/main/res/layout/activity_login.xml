@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="noelc.mypray.activities.LoginActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/mypray_login"
+        android:scaleType="centerCrop"/>
+
+    <View
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="310dp"
+        android:layout_height="120dp"
+        android:id="@+id/view_login"
+        android:layout_marginBottom="70dp" />
+
+
+</RelativeLayout>
