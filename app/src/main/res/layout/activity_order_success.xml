@@ -28,7 +28,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#99000000" />
+                android:background="#44000000" />
 
         </FrameLayout>
 
@@ -37,12 +37,11 @@
     <TextView
         android:padding="20dp"
         android:layout_below="@+id/relative_layout_pic"
-        android:text="Order is placed successfully.\nPress INVITE to invite your family and friends to the event."
+        android:text="Awesome! This is your order tracking ID #2015061401.\nThe delivery will be in 3 days time using MyTeksi #HantarJe.\nDon’t forget to invite your family members to come and join you."
         android:textSize="20sp"
         android:layout_marginBottom="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 
 
     <LinearLayout

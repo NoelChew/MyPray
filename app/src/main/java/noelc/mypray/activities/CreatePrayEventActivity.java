@@ -57,11 +57,17 @@ public class CreatePrayEventActivity extends ActionBarActivity {
         ImageView ivRight = (ImageView) toolbar.findViewById(R.id.image_view_right);
         ivRight.setVisibility(View.GONE);
 
-        tvTitle.setText(getString(R.string.app_name));
+        tvTitle.setText("Create Event");
 
         ivLeft.setImageResource(R.drawable.mypray_back);
-        ivLeft.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//        ivLeft.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
+        ivLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         setSupportActionBar(toolbar);
 
     }
@@ -98,7 +104,7 @@ public class CreatePrayEventActivity extends ActionBarActivity {
 
             // display calendar
             DatePickerDialog datePickerDialog = new DatePickerDialog(
-                   CreatePrayEventActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    CreatePrayEventActivity.this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                     String date = String.valueOf(dayOfMonth) + "-" + String.valueOf(monthOfYear + 1) + "-" + String.valueOf(year);
@@ -113,7 +119,7 @@ public class CreatePrayEventActivity extends ActionBarActivity {
     private View.OnClickListener tvCategoryOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            final CharSequence[] eventList = {"Birthday Anniversary", "Death Anniversary"};
+            final CharSequence[] eventList = {"Birthday", "Death Anniversary"};
 
             AlertDialog.Builder builder = new AlertDialog.Builder(CreatePrayEventActivity.this);
             builder.setTitle("Select a category")
@@ -135,8 +141,8 @@ public class CreatePrayEventActivity extends ActionBarActivity {
         public void onClick(View v) {
             AlertDialog.Builder builder = new AlertDialog.Builder(CreatePrayEventActivity.this);
             builder.setTitle("Confirm Event Creation?")
-                    .setMessage("The admin will assign a package and remind you before the event.\nPress CONFIRM to proceed.")
-                    .setPositiveButton("Confirm", new DialogInterface.OnClickListener(){
+                    .setMessage("A yearly reminder notification of the event will provided two weeks ahead.\nPress CONFIRM to proceed.")
+                    .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intent = new Intent(CreatePrayEventActivity.this, MainActivity.class);

@@ -51,7 +51,7 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#99000000" />
+                    android:background="#44000000" />
 
             </FrameLayout>
 
@@ -87,11 +87,11 @@
                 <TextView
                     android:id="@+id/text_view_description"
                     android:layout_width="wrap_content"
-                    android:maxLines="2"
+                    android:maxLines="5"
                     android:padding="2dp"
                     android:ellipsize="end"
                     android:textSize="15sp"
-                    android:layout_height="50dp" />
+                    android:layout_height="wrap_content" />
 
                 <Button
                     android:layout_marginTop="4dp"

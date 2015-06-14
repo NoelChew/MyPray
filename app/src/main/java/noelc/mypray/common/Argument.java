@@ -9,5 +9,7 @@ public class Argument {
     public static final String PRAY_EVENT = "prayEvent";
     public static final String BUY_ITEMS = "buyITems";
 
+    public static final String EXTRA_MESSAGE = "extraMessage";
+
 
 }

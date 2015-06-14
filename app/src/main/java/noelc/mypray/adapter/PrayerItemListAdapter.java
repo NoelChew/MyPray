@@ -57,4 +57,14 @@ public class PrayerItemListAdapter extends ArrayAdapter<PrayItem> {
         return "RM " + Util.doubleToTwoDecimalString(totalCost);
     }
 
+    public String getTotalPriceAfterDiscount(int discount) {
+        Double totalCost = 0.0;
+        for (PrayItem item: (prayItems)) {
+            totalCost += item.getPriceInDouble();
+        }
+        totalCost = totalCost * (100 - discount) / 100;
+        return "RM " + Util.doubleToTwoDecimalString(totalCost);
+
+    }
+
 }

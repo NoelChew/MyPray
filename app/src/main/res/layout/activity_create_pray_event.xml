@@ -54,6 +54,7 @@
             android:layout_alignParentBottom="true"
             android:id="@+id/button_create"
             android:text="Create"
+            android:textSize="18dp"
             android:padding="15dp"
             android:layout_marginLeft="12dp"
             android:layout_marginBottom="12dp"

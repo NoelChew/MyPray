@@ -1,5 +1,7 @@
 package noelc.mypray.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -79,6 +81,24 @@ public class PrayEventDetailActivity extends ActionBarActivity {
             tvTitle1.setText(mPrayEvent.getTitle());
             tvDescription.setText(mPrayEvent.getDescription());
             tvDate.setText(mPrayEvent.getDate() + " (" + mPrayEvent.getLunarDate() + ")");
+        }
+
+        String extraMessage = getIntent().getExtras().getString(Argument.EXTRA_MESSAGE, "");
+
+        if (extraMessage != null && !TextUtils.isEmpty(extraMessage)) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(PrayEventDetailActivity.this);
+            builder.setTitle("Dumpling Festival")
+                    .setMessage(extraMessage)
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(PrayEventDetailActivity.this, BuyActivity.class);
+                            intent.putExtra(Argument.PRAY_EVENT, getIntent().getExtras().getString(Argument.PRAY_EVENT));
+                            startActivity(intent);
+                            dialog.dismiss();
+                        }
+                    })
+            .show();
         }
 
     }

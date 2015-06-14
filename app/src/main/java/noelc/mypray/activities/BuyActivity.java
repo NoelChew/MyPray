@@ -84,7 +84,7 @@ public class BuyActivity extends ActionBarActivity {
         public void onClick(View v) {
             AlertDialog.Builder builder = new AlertDialog.Builder(BuyActivity.this);
             builder.setTitle("Checkout Order?")
-                    .setMessage("Price including shipment: " + adapter.getTotalPrice())
+                    .setMessage("Price including shipment (after 30% discount): " + adapter.getTotalPriceAfterDiscount(30))
                     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

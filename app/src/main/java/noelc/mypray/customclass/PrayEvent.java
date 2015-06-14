@@ -10,7 +10,7 @@ import noelc.mypray.common.Util;
 /**
  * Created by noelchew on 6/13/15.
  */
-public class PrayEvent {
+public class PrayEvent implements Comparable<PrayEvent> {
     private String title;
     private String description;
     private String date;
@@ -76,10 +76,15 @@ public class PrayEvent {
 
     public String getTotalPrice(String currency) {
         Double totalCost = 0.0;
-        for (PrayItem item: this.getPrayItems()) {
+        for (PrayItem item : this.getPrayItems()) {
             totalCost += item.getPriceInDouble();
         }
 
         return currency + " " + Util.doubleToTwoDecimalString(totalCost);
+    }
+
+    @Override
+    public int compareTo(PrayEvent another) {
+        return (this.getDate().compareTo(another.getDate()));
     }
 }

@@ -50,11 +50,13 @@ public class PrayEventRecyclerViewAdapter extends RecyclerView.Adapter<PrayEvent
             tvDate.setText(prayEvent.getDate() + " (" + prayEvent.getLunarDate() + ")");
 
             if (position == 0) {
+                tvHeading.setVisibility(View.VISIBLE);
                 tvHeading.setText("Upcoming");
                 tvDescription.setVisibility(View.VISIBLE);
             } else {
                 tvDescription.setVisibility(View.GONE);
                 if (position == 1) {
+                    tvHeading.setVisibility(View.VISIBLE);
                     tvHeading.setText("Future");
                 } else {
                     tvHeading.setVisibility(View.GONE);
