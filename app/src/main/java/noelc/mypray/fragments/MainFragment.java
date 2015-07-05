@@ -42,6 +42,7 @@ public class MainFragment extends Fragment {
     private PrayEventRecyclerViewAdapter adapter;
 
     private static final boolean SAVE_INTO_DB = false;
+    private static final boolean USE_BLUEMIX = false;
 
     private ArrayList<PrayEvent> prayEvents;
 
@@ -53,16 +54,22 @@ public class MainFragment extends Fragment {
     }
 
     private void init() {
-        blApplication = (BlueListApplication) getActivity().getApplication();
-        itemList = blApplication.getItemList();
-        if (SAVE_INTO_DB) {
-            clearBluemixDb(itemList);
-            saveToBluemixDb(generateData());
-            itemList = blApplication.getItemList();
-        }
-        prayEvents = convertBluemixItemListToPrayEventList(itemList);
+        if (USE_BLUEMIX) {
 
-        Collections.sort(prayEvents);
+            blApplication = (BlueListApplication) getActivity().getApplication();
+            itemList = blApplication.getItemList();
+            if (SAVE_INTO_DB) {
+                clearBluemixDb(itemList);
+                saveToBluemixDb(generateData());
+                itemList = blApplication.getItemList();
+            }
+            prayEvents = convertBluemixItemListToPrayEventList(itemList);
+            Collections.sort(prayEvents);
+        } else {
+            prayEvents = generateData();
+            Collections.sort(prayEvents);
+
+        }
     }
 
     @Override
@@ -151,7 +158,6 @@ public class MainFragment extends Fragment {
 //        prayItems.add(tmpItem10);
 
 
-
         PrayEvent tmpEvent1 = new PrayEvent("Dragon Boat Festival – Dumpling Festival", "There are many legends about the evolution of the festival, the most popular of which is in commemoration of Qu Yuan (340-278 BC). Qu Yuan was minister of the State of Chu and one of China's earliest poets. He advocated enriching the country and strengthening its military forces so as to fight against the Qin. However, he was opposed by aristocrats and later deposed and exiled by King Huai. In 278 BC, he heard the news that Qin troops had finally conquered Chu's capital, he plunged himself into the Miluo River, clasping his arms to a large stone. After his death, the people of Chu crowded to the bank of the river to pay their respects to him. The fishermen sailed their boats up and down the river to look for his body. People threw into the water zongzi to divert possible fish or shrimp from attacking his body. An old doctor poured a jug of reaglar wine (Chinese liquor seasoned with realgar) into the water, hoping to turn all aquatic beasts drunk. That's why people later followed the customs such as dragon boat racing, eating zongzi and drinking realgar wine on that day.",
                 "2015-06-20", "乙未年五月初五", R.drawable.dwf, prayItems3);
         PrayEvent tmpEvent2 = new PrayEvent("Birthday of Guan Gong, God of Warriors", "Guan Ti or Guan Yun Chang was born in Shan Xi province during the Three Kingdom (220 – 260 AD). He was known for his righteous, and justice which got Guan Yu into trouble when he interfered with a licentious and corrupt magistrate who forced a poor lady to become his concubine. The magistrate was slayed by Guan Yu. He had to flee for his life and escape to the mountain to seek refuge. As he was on his journey to the neighbouring province he stops by a stream to have a wash; when to his surprise he noticed a great changed in his appearance! His facial complexion had changed from pale white to reddish tint which saved him to disguise himself and was able to walk through the sentries who was guarding the mountain pass.",
@@ -202,7 +208,7 @@ public class MainFragment extends Fragment {
 
     private ArrayList<PrayEvent> convertBluemixItemListToPrayEventList(List<Item> itemList) {
         ArrayList<PrayEvent> prayEvents = new ArrayList<>();
-        for (Item item: itemList) {
+        for (Item item : itemList) {
             PrayEvent tmpPrayEvent = PrayEvent.deserialise(item.getName());
             prayEvents.add(tmpPrayEvent);
         }
@@ -249,7 +255,7 @@ public class MainFragment extends Fragment {
                 @Override
                 public Void then(Task<IBMDataObject> task) throws Exception {
                     // Log if the delete was cancelled.
-                    if (task.isCancelled()){
+                    if (task.isCancelled()) {
                         Log.e(CLASS_NAME, "Exception : Task " + task.toString() + " was cancelled.");
                     }
 
@@ -266,7 +272,7 @@ public class MainFragment extends Fragment {
                     }
                     return null;
                 }
-            },Task.UI_THREAD_EXECUTOR);
+            }, Task.UI_THREAD_EXECUTOR);
         }
 
     }
